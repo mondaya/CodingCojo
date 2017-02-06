@@ -1,0 +1,13 @@
+cloudera@quickstart HTML]$ ls
+about.txt  indentation.html
+[cloudera@quickstart HTML]$ cd ..
+[cloudera@quickstart WebFundamentals]$ pwd
+/home/cloudera/Desktop/DojoAssignments/WebFundamentals
+[cloudera@quickstart WebFundamentals]$ cd ..
+[cloudera@quickstart DojoAssignments]$ ls
+iOS  MEAN  netCore  Phyton  Ruby  WebFundamentals
+[cloudera@quickstart DojoAssignments]$ ls less
+ls: cannot access less: No such file or directory
+[cloudera@quickstart DojoAssignments]$ cd Phyton/
+[cloudera@quickstart Phyton]$ less about.txt 
+[cloudera@quickstart Phyton]$ 

@@ -1,0 +1,15 @@
+sudo mkdir test
+sudo touch style.css
+sudo touch command.txt
+sudo cp index.html index_2.html
+sudo rm styles.css
+cd ..
+sudo mkdir destination
+sudo mv test/index_2.html  destination/
+
+cd test
+ls
+cd ..
+cd destination/
+ls
+sudo rm -rf destination/
