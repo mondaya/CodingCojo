@@ -1,0 +1,22 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Flask"/>
+        <title>Counting visited times</title>
+        
+    </head>
+    <body>
+        <div id="container"> 
+            <h3>Counter</h3>
+            <div>{{session['counter']}}</div>
+           <form action="/add2" method="POST">             
+              <input type='submit' value='add2' >
+           </form>
+           <form action="/reset" method="POST">             
+              <input type='submit' value='reset'>
+           </form>        
+           
+        </div>
+    </body>
+</html>
