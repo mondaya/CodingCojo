@@ -1,9 +1,0 @@
-from django.conf.urls import url ,include
-import views
-
-
-urlpatterns = [
-    url(r'^$', views.index),
-    url(r'^process_survey$',views.process_survey),
-    url(r'^survey_result$',views.survey_result)
-]
