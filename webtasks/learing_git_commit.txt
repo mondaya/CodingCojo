@@ -1,0 +1,14 @@
+mkdir test
+cd test
+touch index.html
+touch styles.css
+touch aboutMe.txt
+git init
+git add .
+git commit -m "intial commit of git 101"
+git add .
+git commit -m "updated aboutMe"
+git add .
+git commit -m "added favorite movie to aboutMe"
+git revert  967ff3c1
+git commit . -m "revert 967ff3c1"
