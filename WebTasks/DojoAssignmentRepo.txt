@@ -1,0 +1,4 @@
+//Contiuing from previous steps in git 101 tasks
+//Repo  created in github as Coding Cojo
+touch readme.md
+git status
