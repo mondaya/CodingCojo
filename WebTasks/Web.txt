@@ -1,0 +1,20 @@
+Web
+- Client (Client Side)
+        DNS
+- Server (Server Side)
+    
+The B3 of the Web
+    HTML - Mark up language
+    CSS - Formating/Sytling
+    JavaScript - Interactive part the page
+    
+
+HTML 
+  Tags
+    p - paraghrap
+    h - header <h1-h6>
+    a - Anchor - link by sepcifing the href attributes
+    
+    
+    
+

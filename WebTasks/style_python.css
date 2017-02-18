@@ -1,0 +1,175 @@
+/*CSS reset settings here*/
+*{
+ margin: 0px;
+ padding: 0px;
+ /*outline:1px dotted red*/;
+}
+#wrapper{
+ width: 970px;
+ background-color: #2d5986;
+ padding:0px;
+}
+
+#goBtn{
+ background-color: #2d5986; 
+ border-radius: 10px;
+ height:43px;
+ width:60px;
+}
+
+#searchBox{
+    height:43px;
+}
+#header img,#site_search{  
+ height:110px;
+ 
+}
+
+#header img, #site_search {
+     display:inline-block;
+ }
+ 
+#site_search{
+     text-align:right;
+     width:575px;
+     vertical-align:top;     
+ }
+ 
+#search_box{
+     height:100px;
+     width:auto;
+     text-align:center;
+     display:inline-block;     
+ }
+ 
+ #query{
+     background-color:#3e3e5b;     
+     border-radius: 20px;
+     width:300px;
+     padding:10px;
+     margin:5px;
+ }
+ 
+ #text_size_opt{
+     text-align:right;
+ }
+ #text_size_opt ul li{     
+    display:inline;
+    border-right: solid thin black;
+    padding-right:5px;
+    color:yellow;    
+ }
+ 
+ #text_size_opt ul li a{     
+     color:yellow;
+ }
+ #text_size_opt label{     
+     color:white;
+ }
+ #text_size_opt #large{     
+    border: none;
+ }
+ #text_size_opt ul, label{     
+     display:inline;
+     list-style:none;
+ }
+ 
+ 
+#navigation{
+ background-color:#6699ff;
+ padding:20px;
+ margin:20px;
+ border-radius:20px;
+
+}
+
+#navigation ul{
+ list-style:none;
+}
+
+#navigation ul li{
+ display:inline;
+ margin:20px;
+ color:white;
+ font-size: 140%;
+}
+ #main_content{
+  margin-left:20px;
+ }
+ 
+ #main_content_1{
+  background-color:white;
+  width:970px;
+  margin:0px;
+ }
+ 
+
+#main_content .subcontent , #main_content_1 .subcontent_1{
+ display:inline-block; 
+ vertical-align:top;
+  }
+  
+  #main_content_1 .subcontent_1{
+    border-top:solid thick #66ffff;
+    margin:40px;
+  }
+ 
+  
+   
+#main_content .subcontent ul li ,a ,p{
+ text-align:center;
+ color:white;
+ font-size: 110%;
+ margin:20px;
+ list-style-position: inside;
+ }
+ 
+  
+ #main_content_1 .subcontent_1 ul li a,span{
+ color:#66ffff;
+ font-size: 110%;
+ 
+ 
+ }
+ 
+ #main_content_1 .subcontent_1 ul li {
+ text-align:center;
+ font-size: 110%;
+ margin:20px; 
+ }
+ 
+ #main_content_1 .subcontent_1 h4,p{
+ text-align:center;
+ color:black;
+ font-size: 110%;
+ margin:20px;
+ 
+ }
+  
+  #main_content_1 .subcontent_1 p{
+ text-align:center;
+ color:black;
+ font-size: 110%;
+ margin:20px;
+ list-style-position: inside;
+ }
+ 
+.no_list_style{
+   list-style: none; 
+}
+
+.yellow_text{
+    color:yellow;
+}
+.f_content{
+     display:inline-block;
+     text-align:center;
+     margin-right:80px;
+     margin-left:80px;
+     color:#66ffff;
+}
+#footer{
+    width: 970px;
+    height:100px;
+    text-align:center;
+}
