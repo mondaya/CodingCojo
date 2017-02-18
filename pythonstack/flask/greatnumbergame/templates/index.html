@@ -1,0 +1,73 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Flask"/>
+        <title>Counting visited times</title>
+        
+        <style>
+            #container{
+                text-align:center;
+                width:500px;
+                height:5000px;
+            }
+            div {
+                text-align:center;
+                
+            }
+            .hilo{
+                background-color:red;
+                color:white;
+                width:100px;
+                height:100px;
+                margin-left: 200px;
+                margin-bottom: 20px;
+                padding-top: 50px;
+
+            }
+            .win{
+                height: 100px;
+                width: 150;
+                margin-left: 150px;
+                background-color: green;
+                padding-top: 25px;
+                color: white;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div id="container"> 
+            <h3>Welcome to the Great Number Game</h3>
+            <p>I am thinking of number between 1 - 100</p>            
+            <div>
+                {% if session['won'] != True %}
+                    <p>Take a guesss!</p>
+                        {% if session['below'] == true %}
+                            <div  class="hilo">
+                                <p>Low</p>
+                            </div>
+                        {% endif %}
+                        {% if session['above'] == true %}
+                            <div  class="hilo">
+                                <p>High</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <form action="/guessed" method="POST">
+                          <input type='number' value='0' name="guessed_num" max="100"/ ><br><br>          
+                          <input type='submit'/>
+                    </form>
+                 {% else %}
+                    <form class="win" action="/reset" method="POST">
+                        <p><big>{{session['choosen_num']}}</big> was the number!</p>
+                        <input type='submit' value="Play again!"/>                  
+                    </form>
+                 {% endif %}
+            </div>
+           
+                
+           
+        </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+Django is a framework built on python for web development.
+
+pip install Django - This command uses pip, pacjkagae installer for python, to install the Django framework.
+Intalling on PC - I get a few message like "~A true SSLContext object is not available~".
+I quess my version of python is using an older version of open SSL
+
+pip list - list all the package installed by pip or pre-installed via python.
+
+pip install Django - installs Django. "SSL certification warning"
+
+pip freeze - show list of packages and versions
+
+pip freeze > requirements.txt - show list of packages and versions
+
+pip show Django - list information about Django - Author, package version ,lib location and some detail of what Django is all about.
+
+
+pip uninstall Django - uninstall Django
+
+
+
+pip search Flask - returns lots of flask based tools
+
+
+
