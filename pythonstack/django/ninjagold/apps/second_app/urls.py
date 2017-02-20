@@ -4,6 +4,6 @@ import views
 urlpatterns = [
     
     url(r'^$', views.index),
-    url(r'^find_gold_result$',views.find_gold),
+    url(r'^process_money/(?P<building>\w+)$',views.find_gold),
     url(r'^reset$',views.reset),
 ]

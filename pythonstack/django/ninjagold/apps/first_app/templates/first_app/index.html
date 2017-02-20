@@ -1,0 +1,67 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Ninja Gold</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script>       
+       
+    </head>
+    <body>
+        <div id="container"> 
+            <div id="scoreboard">
+            Your Gold:     <input type="text" value='{{score}}' readonly>
+            </div>        
+            <div id="buildings">
+                  <form class="building" method="POST">
+                    {% csrf_token %}
+                    <h4>Farm</h4>
+                    <p>(earn 10-20 golds)</p>
+                    <button>Find Gold!</button>
+                    <input type="hidden" name="building" value="farm" />
+                  </form>  
+                  <form class="building" method="POST">
+                    {% csrf_token %}
+                    <h4>Cave</h4>
+                    <p>(earn 5-10 golds)</p>
+                    <button>Find Gold!</button>
+                    <input type="hidden" name="building" value="cave" />
+                  </form>
+                  <form class="building" method="POST">
+                    {% csrf_token %}
+                    <h4>House</h4>
+                    <p>(earn 2-5 golds)</p>
+                    <button>Find Gold!</button>
+                    <input type="hidden" name="building" value="house" />
+                  </form> 
+                  <form class="building" method="POST">
+                    {% csrf_token %}
+                    <h4>Casino</h4>
+                    <p>(earn/take 0-50 golds)</p>
+                    <button>Find Gold!</button>
+                    <input type="hidden" name="building" value="casino" />
+                  </form>                  
+            </div> 
+            <label>Activities</label>
+            <div id="activities" tabindex="-1">
+                {% for activity in activities %}
+                    {% if activity.profit < 1 %}
+                        <p class="red"> Entered a {{activity.type}} and lost {{activity.profit}} golds ...Ouch. ({{activity.time}})</p>
+                    {% else %}
+                        <p class="green"> Earned {{activity.profit}} golds from the {{activity.type}}. ({{activity.time}})</p> 
+                    {% endif %}                    
+                {% endfor %}                            
+            </div>
+            <form action="/reset"method="POST">
+                {% csrf_token %}
+                <input type="submit" name="reset" value="reset"/>
+            </form> 
+            
+                       
+        </div>
+    </body>
+</html>
