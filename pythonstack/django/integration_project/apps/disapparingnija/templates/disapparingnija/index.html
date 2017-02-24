@@ -1,0 +1,25 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Disappearing Ninja(Django)</title>
+        <!-- <link rel="stylesheet" href="DisappearingNinja.css"></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="DisappearingNinja.js"></script> -->
+    </head>
+    <body>
+        <div id="container">   
+            <div id="image">
+                <div>
+                    {% if ninja_img %}
+                       {% load static %}
+                        <img src="{% static 'disapparingnija/img/ninjas/'|add:ninja_img %}" alt="My image"/>
+                    {% else %}
+                        <h1>No ninjas here</h1>
+                    {% endif %}
+                </div>                
+            </div>            
+        </div>
+    </body>
+</html>

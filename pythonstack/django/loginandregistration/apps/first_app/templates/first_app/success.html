@@ -1,0 +1,31 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Courses</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            p{
+                color:green;
+             }
+        </style>
+       
+    </head>
+    <body>
+        <div id="container"> 
+            <h2>Sucess! Welcome, {{first_name}}!</h2>
+            <p><small>Succesfully {{status}}</small></p>
+            
+            <form  action="/logout"  method="post">
+                {% csrf_token %}                             
+                <input type="submit" value="logout"/>              
+            </form>
+                                  
+        </div>
+    </body>
+</html>

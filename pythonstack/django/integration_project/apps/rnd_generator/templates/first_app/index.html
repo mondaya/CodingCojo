@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Random Keyword Generator</title>
+    </head>
+     <style>
+            div {width: 1000px;
+                height: 200px;
+            } 
+
+            .line{width: 1000px;
+               text-align: center
+            }            
+            .keyword {
+               font-family: Arial, Helvetica, sans-serif;   
+               padding-left:50px;
+               padding-right:50px;
+               margin-left:350px;               
+                              
+            }
+            
+           p,h2{ border: 2px solid black; 
+              padding:0px;
+              width:200px;
+              margin-left:400px; 
+             
+            } 
+            
+     </style>
+    <body>
+        <form action="/rnd_generator/generate" class="line">
+             <p>Random Word ( attempt #{{request.session.count}} )</p>
+             <h2 class="keyword">{{request.session.keyword}}</h2>
+             <button>Generate</button>
+        </form>
+    </body>
+</html>
