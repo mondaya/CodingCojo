@@ -82,4 +82,4 @@ class User(models.Model):
     password = models.CharField(max_length=256)
     created_at =  models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    userManager = UserManager()
+    objects = UserManager()
