@@ -1,0 +1,54 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Courses</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            #header a, h1 {
+                display:inline-block;
+            }  
+
+            #header a {
+                margin-left:100px;
+            }             
+        </style>
+       
+    </head>
+    <body>
+        <div id="container">             
+            <div  id="header">
+                <h1>MostPopular Secrets</h1>
+                <a href="{% url 'main_app:home' %}"><big>Back</big></a>         
+            </div>
+            
+            <div id="secret_list">
+                {% for post in secrets %}
+                   <div>
+                        <p>{{post.secret}} ({{post.created_at|timesince}} ago) {{post.likes.count}} likes
+                        
+                           {% if not post.is_user_post and  post.user_likes %}
+                                <span><b>You liked this</b></span>
+                           {% endif %}
+                           {% if not post.is_user_post and  not post.user_likes %}
+                                <span><a href="{% url 'main_app:home' %}">Like</a></span>
+                           {% endif %}
+                           {% if post.is_user_post %}
+                                <span><b>You posted this</b> <a href="{% url 'main_app:home' %}">Delete</a></span>
+                           {% endif %}
+                           {% comment "Optional note" %}
+                                {{-is users post({{post.is_user_post}})- user liked({{post.user_likes}})-user id({{post.user.id}})
+                           {% endcomment %}
+                        </p>
+                   </div> 
+                {% endfor %}                        
+            </div>          
+                                  
+        </div>
+    </body>
+</html>

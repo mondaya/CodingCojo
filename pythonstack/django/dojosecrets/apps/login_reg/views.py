@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect,HttpResponse
 from models import User
-from ..courses.models import Course
 
 from django.contrib import messages
 # Create your views here.
@@ -44,6 +43,6 @@ def logout(request):
 def success(request):
     if 'user_id' in request.session: 
         request.session['user_status']  = 'logged in'  
-        return redirect('courses:home')
+        return redirect('main_app:home')
     else :
         return redirect('home' )

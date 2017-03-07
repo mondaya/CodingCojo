@@ -1,0 +1,56 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Products</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            p{
+                color:green;
+             }
+             table, th, td {
+                border: 1px solid black;
+                padding: 2px;
+            }
+            form {
+                display:inline-block;
+            }
+        </style>
+       
+    </head>
+    <body>
+        <div id="container"> 
+            <h2>Products</h2>
+            
+            
+            <div id="products">
+                <table>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{product.name}}</td> 
+                            <td>{{product.description}}</td>  
+                            <td>${{product.price}}</td>  
+                            <td>
+                                <a href="{% url 'products:show_product' product_id=product.id %}">Show</a> <big><b> | </b></big>  
+                                <a href="{% url 'products:edit'  product_id=product.id %}">Edit</a><big> <b> | </b></big>   
+                                <form action="{% url 'products:remove' %}" method="post" > {% csrf_token %}<button name="product_id" value='{{product.id}}'>Remove</button></form>
+                            </td>                              
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div> 
+            <br>
+            <a href="{% url 'products:show_new' %}">Add new product</a>
+                                  
+        </div>
+    </body>
+</html>

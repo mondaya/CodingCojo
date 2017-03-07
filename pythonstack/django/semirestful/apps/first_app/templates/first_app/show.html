@@ -1,0 +1,38 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Courses</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            label {
+                   margin:20px;
+                   margin-left:0px;
+                   vertical-align:top;
+            }
+            input {
+                margin-left:40px;
+                margin-bottom:10px;
+            }                   
+        </style>
+       
+    </head>
+    <body>
+        <div id="container"> 
+            <div id="show_product" >
+                {% csrf_token %}
+                <h4>Product {{product.id}}</h4>
+                <label>Name:</label><input type="text" value="{{product.name}}" readonly /><br>
+                <label>Description:</label><textArea cols=76, rows=10  readonly>{{product.description}}</textArea><br><br>
+                <label>Price:</label><input type="text" name="price" value='${{product.price|default:"0.00"}}'readonly /><br>               
+                
+            </div>          
+            <a href="{% url 'products:edit'  product_id=product.id %}">Edit</a>   |      <a href="{% url 'products:home' %}">Back</a>      
+        </div>
+    </body>
+</html>

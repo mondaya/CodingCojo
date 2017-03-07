@@ -23,8 +23,6 @@ class UserManager(models.Manager):
             request.session['user'] = 'Monday'
             return redirect('/success')
 
-
-
 # Create your models here.
 class User(models.Model):
     first_name = models.CharField(max_length=34)

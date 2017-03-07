@@ -1,0 +1,81 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Courses</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            #logout p{
+                color:green;
+            }
+            #post input {
+               height:35px;
+               width:120px;
+               background-color:#0099e6;
+               margin-right:338px;               
+            }
+             #header a, h1 {
+                display:inline-block;
+            }  
+
+            #header a {
+                margin-left:100px;
+            }  
+        </style>
+       
+    </head>
+    <body>
+        <div id="container">             
+            <form  id="logout" action="/logout"  method="post">
+                {% csrf_token %}               
+                <input type="submit" value="logout"/>    
+                <p><small>{{status}}</small></p>                
+            </form>
+            {% if not popular %}
+                <form  action="{% url 'main_app:posts' %}"  method="post" id="post">                
+                    {% csrf_token %} 
+                    <h2>Hello, {{first_name}}!</h2>
+                    <textArea cols=75 rows=20 name="post_data" placeholder="Your secret here..."></textArea>            
+                    <br> 
+                    <input type="submit" value="post"/>     <a href="{% url 'main_app:popular' %}"><b>Most Popular Secrets</b></a>         
+                </form>
+             {% endif %}
+             {% if popular %}
+                <div  id="header">
+                    <h1>MostPopular Secrets</h1>
+                    <a href="{% url 'main_app:home' %}"><big>Back</big></a>         
+                </div>
+             {% endif %}
+            <div id="secret_list">
+                <h1>Recent Secrets...{{secrets.count}}</h1>
+                {% for post in secrets %}
+                   <div>
+                        <p>{{post.secret}} ({{post.created_at|timesince}} ago) {{post.likes.count}} likes
+                        
+                           {% if not post.is_user_post and  post.id in secrets_liked_user %}
+                                <span><b>You liked this</b></span>
+                           {% endif %}
+                           {% if not post.is_user_post and  post.id not in secrets_liked_user %}
+                                <span><a href="{% url 'main_app:like_post' post_id=post.id  %}">Like</a></span>
+                           {% endif %}
+                           {% if post.is_user_post %}
+                                <span><b>You posted this</b> <a href="{% url 'main_app:delete_post' post_id=post.id  %}">Delete</a></span>
+                           {% endif %}
+                           
+                           {% comment "For Debuging" %}
+                                -is users_post({{post.is_user_post}})- user liked({{post.user_liked}})-user id({{post.user.first_name}})
+                                {{-is users post({{post.is_user_post}})- user liked({{post.user_liked}})-user id({{post.user.first_name}})
+                           {% endcomment %}
+                        </p>
+                   </div> 
+                {% endfor %}                        
+            </div>          
+                                  
+        </div>
+    </body>
+</html>

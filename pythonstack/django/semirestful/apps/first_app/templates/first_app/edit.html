@@ -1,0 +1,46 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <meta name="descripition" content="Learning about Django"/>
+        <title>Courses</title>
+        
+        {% load static %}
+        <link rel="stylesheet" href={% static "first_app/css/index.css"  %}></link>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src={% static "first_app/js/index.js"  %}></script> 
+        <style>
+            label {
+                   margin:20px;
+                   margin-left:0px;
+                   vertical-align:top;
+            }
+            form input {
+                margin-left:39px;
+                margin-bottom:10px;
+            }
+            form input[type=submit] {
+                margin-left:650px;
+                height:45px;
+                width:80px;
+                color:white;
+                background-color:blue;
+            }           
+        </style>
+       
+    </head>
+    <body>
+        <div id="container"> 
+            <form id="new_product" action="{% url 'products:update' product_id=product.id  %}"  method="post">
+                {% csrf_token %}
+                <h4>Edit Product {{product.id}}</h4>
+                <label>Name:</label><input type="text" name="product_name" value='{{product.name}}'/><br>
+                <label>Description:</label><textArea cols=76, rows=10 name="description">{{product.description}}</textArea><br><br>
+                <label>Price:</label><input type="text" name="price" value='{{product.price}}'/><br>
+                <input type="submit" name="add" value="Update"/><br>                
+            </form>        
+           
+            <a href="{% url 'products:show_product' product_id=product.id %}">Show</a>  | <a href="{% url 'products:home' %}">Back</a>            
+        </div>
+    </body>
+</html>
