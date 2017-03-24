@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Dojo Dachi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="~/css/style.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
+        <script>
+            $(document).ready(function(){
+                
+                $('#actions button').click(function(){
+                    var  action = $(this).attr('name')
+                    console.log(action);
+                    $.get("dojodachi/perform/" + action, function(res) {
+                           //console.log(res);
+                           var divs  = $('#score_board div')
+                           var count = 0;
+                           for(var key in res){
+                                divs[count].innerHTML =  key +  ":" + res[key]  
+                                count++; 
+                                if(count > divs.length)
+                                    break;                     
+                           }   
+
+                            $.get("dojodachi/emoji/state", function(res) {
+                                    //console.log(res);
+                                    $('#emoji img').attr('src', res.image);
+                                    var msg = $('#emoji_msg');
+                                    msg.text(res.message);
+                                    if(res.restart){                               
+                                        $('#restart').show();
+                                        $('#actions').hide();  
+                                    }                    
+                                        
+                            }, "json");
+                       
+                            
+                }, "json");
+
+               
+                })
+                
+            })
+        </script>
+    </head>
+     <style>
+                  
+            
+           div{ border: 1px solid floralwhite;}     
+           #restart{display:none}     
+           #score_board div{
+                text-transform: capitalize;
+                font-weight: bold;
+                color:mediumslateblue;
+           }
+           #emoji_msg {
+                font-weight: bold;
+           }
+            
+     </style>
+    <body>
+        <div class="container">
+             <div class="row" id="score_board">
+                    <div class="col-xs-12 col-lg-3">Fullness:@ViewBag.Fullness</div>
+                    <div class="col-xs-12 col-lg-3">Happiness:@ViewBag.Happiness</div>
+                    <div class="col-xs-12 col-lg-3">Meals:@ViewBag.Meals</div>
+                    <div class="col-xs-12 col-lg-3">Energy:@ViewBag.Engery</div>
+             </div>
+             <div class="row" id="emojibox">
+                  <div class="col-xs-12 col-lg-12 col-md-offset-4" id="emoji"><img src=@ViewBag.image alt="emoji" class="img-rounded"/></div>    
+                  <div class="col-xs-12 col-lg-12" id="emoji_msg">DojoDachi is wating ON You!!!!. What would You like to do?</div>               
+
+             </div>
+             <div class="row" id="actions">
+                <button type="button" class="btn btn-success btn-lg"  name="Feed">Feed</button>
+
+                    <!-- Contextual button for informational alert messages -->
+                    <button type="button" class="btn btn-info btn-lg" name="Play">Play</button>
+
+                    <!-- Indicates caution should be taken with this action -->
+                    <button type="button" class="btn btn-warning btn-lg" name="Work">Work</button>
+
+                    <!-- Indicates a dangerous or potentially negative action -->
+                    <button type="button" class="btn btn-danger btn-lg"  name="Sleep">Sleep</button>
+             </div>
+             <div class="row" id="restart">
+                <a class="btn btn-primary btn-lg" href="dojodachi/reset" role="button">Restart</a>
+             </div>
+        </div>
+    </body>
+</html>

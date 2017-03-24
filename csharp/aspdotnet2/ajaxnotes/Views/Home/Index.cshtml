@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <h2 class="col-md-12 col-md-offset-4" >Notes</h2>
+    <div id="notes">
+        @{
+           
+            foreach(var item in ViewBag.Notes)
+                {  
+                    <div class="row">               
+                        <form action="javascript:void(0);" id="note" noteId=@item.id class="col-md-6">
+                            <div class= "row" id="title">
+                                <h3 class="col-md-6" name="title">@item.title</h3>
+                                <input type="hidden" name="title" value=@item.title>
+                                <input type="hidden" name="id" value=@item.id>                            
+                            </div>
+                            <div class= "row" id="description">
+                                <textarea rows=10 cols=50 readonly class="col-md-6" name="description">@item.description</textarea>
+                                <button id="update" class="btn btn-primary col-md-2" noteId=@item.id >Update</button>              
+                            </div>
+                        </form>
+                        <form action="remove/@item.id" method="POST" id="delete_note" class="col-md-2">
+                                        <button type="submit" class="btn btn-link col-md-6">Delete</button>
+                        </form>
+                    </div>
+                        
+                }
+          
+        } 
+
+    </div>
+
+    <form action="add" method="post" class="form">
+    <div class="form-group form-group-lg">    
+        <input class="form-control" type="text" id="title" name="title" placeholder="Insert note title here">
+        <button type="submit" class="btn btn-primary">Add Note</button>    
+    </div>  
+    </form><br>
+    <div class="row" id="errors">
+        @{
+            foreach(var error in ViewBag.Errors)
+                {
+                    if(@error.Errors.Count > 0)
+                    {
+                        <p>@error.Errors[0].ErrorMessage</p>
+                    }
+                }
+        }
+    </div>
+</div>

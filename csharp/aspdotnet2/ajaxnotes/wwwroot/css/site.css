@@ -1,0 +1,11 @@
+/*Write all of your CSS here*/
+button, input {
+    margin: 5px;
+}
+
+textArea{overflow-y: scroll;}
+#update{display: none;}
+
+/*div{
+    border: 1px solid red;
+}*/

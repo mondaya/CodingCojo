@@ -1,1 +1,1 @@
-cd "C:\Users\mone\Desktop\Coding Cojo\"
+cd "C:\Users\mone\Desktop\CodingCojo\"

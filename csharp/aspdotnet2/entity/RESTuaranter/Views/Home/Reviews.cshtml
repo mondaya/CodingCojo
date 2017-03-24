@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Resturanter.Models.Review>
+
+
+<div>
+    @{
+        foreach(var review in @Model)
+        {
+           
+            <div class="row">              
+                <label class="col-lg-2">Review for:</label>
+                <p class="col-lg-2">@review.ResturantName</p>
+                <p class="col-lg-2">@review.Stars</p>                               
+            </div>
+
+              <div class="row">              
+                <label class="col-lg-2">Reviewer:</label>
+                <p class="col-lg-2">@review.ReviewerName</p>
+                <p class="col-lg-2">@review.DateOfVisit.ToString("MMMM dd, yyyy")</p>                             
+            </div>                          
+            <p>@review.ReviewText</p>               
+            <br><br>
+             
+          
+        }
+    }
+</div> 
+
+
+

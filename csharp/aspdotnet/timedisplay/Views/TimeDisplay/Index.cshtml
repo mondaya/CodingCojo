@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Time Display</title>
+    </head>
+     <style>
+            div {width: 1000px;
+                height: 200px;
+            } 
+
+            .line{width: 1000px;
+               text-align: center
+            }            
+            .time {
+               font-family: Arial, Helvetica, sans-serif;   
+               padding-left:50px;
+               padding-right:50px;
+               margin-left:350px;               
+                              
+            }
+            
+           p,h2{ border: 2px solid black; 
+              padding:0px;
+              width:200px;
+              margin-left:400px;
+             
+            } 
+            
+     </style>
+    <body>
+        <div class="line">
+             @{DateTime CurrentTime = DateTime.Now;}
+             <p>The current time and date</p>
+             <h2 class="time">@CurrentTime.ToString("MMM,d,yyyy")<br>@CurrentTime.ToString("h:m tt")</h2>
+            
+        </div>
+    </body>
+</html>

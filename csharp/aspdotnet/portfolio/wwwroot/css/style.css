@@ -1,0 +1,52 @@
+#header {
+    height: 30px;
+    width:100%;
+    border: 1px,solid,cornflowerblue;
+    background-color: lavenderblush
+}
+
+#home,#projects,#contact {
+    height: 960px;
+    width:100%;
+    border: 1px,solid,darkorchid;
+    background-color: palegreen;
+}
+
+
+a[active] {
+    background-color: green;
+}
+
+#home{
+     background-color: palegreen;
+}
+
+#projects{
+     background-color: lightskyblue;
+}
+
+#contact{
+     background-color: goldenrod;
+}
+
+#home img,#projects img,#contact img {
+    height: 200px;
+    width:200px;   
+}
+
+label {
+        vertical-align:top;
+        display:inline-block;
+        width:130px;
+        text-align:right;
+}
+form input , form textarea{                
+    margin-bottom:10px;
+    margin-left:5px;
+}
+form input[type=submit] {
+    margin-left:135px;
+    width:80px;
+    color:white;
+    background-color:deepskyblue;
+}            

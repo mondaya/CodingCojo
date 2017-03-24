@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Quoting Dojo";}
+ <div class="row">
+    <h1 class="col-xs-12 col-md-12">Here are the awesome quotes</h1>
+ </div>
+
+@foreach(var entity in ViewBag.quotes){
+  <div class="row">
+    <blockquote>
+      <p>@entity["quote"]</p>
+      <p class="col-xs-12 col-md-12 col-md-push-1">-@entity["author"] at @entity["created_at"]</p>
+    </blockquote>
+  </div>
+}

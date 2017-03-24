@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Pokeman Page";
+}
+
+<h1>@ViewBag.name</h1>
+<p>Type: @ViewBag.primaryType</p>
+<p>Height: @ViewBag.height</p>
+<p>Weight: @ViewBag.weight</p>
+<p>Pokeman's types:</p>
+<ul>
+@foreach(var type in ViewBag.pokemons_type)
+{
+    <li>@type</li>
+}
+</ul>
+
+
+@foreach(var sprite in ViewBag.sprites)
+{
+    @if(sprite.Value != null){
+        <img id="sprite" src=@sprite.Value alt="sprite"/>
+    }
+}

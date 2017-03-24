@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Resturanter.Models.Review
+ 
+<form asp-controller="Home" asp-action="Review" method="post">
+    <div class=row>
+            <h3 class="col-xs-12 col-md-12">Write a new Review</h3>
+    </div>
+    <label asp-for="ReviewerName" class="col-xs-12 col-md-2 ">Reviewer Name:</label>
+    <input asp-for="ReviewerName" class="col-xs-12 col-md-2"/><br><br>
+
+
+    <label asp-for="ResturantName" class="col-xs-12 col-md-2">Resturant Name:</label>
+    <input asp-for="ResturantName" class="col-xs-12 col-md-3"/><br><br>
+
+
+    <label asp-for="ReviewText" class="col-xs-12 col-md-2">Review:</label>
+    <input asp-for="ReviewText" class="col-xs-12 col-md-3"/><br><br>
+
+    <label asp-for="DateOfVisit" class="col-xs-12 col-md-2">Date of visit:</label>
+    <input asp-for="DateOfVisit" type="date" class="col-xs-12 col-md-2"/><br><br>
+
+    <label asp-for="Stars" class="col-xs-12 col-md-2">Stars:</label>
+    <select asp-for="Stars" class="col-xs-12 col-md-1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br><br>
+  
+    <button type="submit">Submit</button>   
+    <div asp-validation-summary="All"></div>
+
+   
+</form>
