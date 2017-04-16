@@ -1,0 +1,10 @@
+<h1>Users#edit</h1>
+<form action="/users/<%= @user.id%>/update" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <input type="text" name="first_name"placeholder="first name" value='<%= @user.first_name%>'><br><br>
+    <input type="text" name="last_name" placeholder="last name" value='<%= @user.last_name%>'><br><br>
+    <input type="text" name="email_address" placeholder="email address" value='<%= @user.email_address%>'><br><br>
+    <input type="number" name="age" placeholder="Age" value='<%= @user.age%>'><br><br>    
+    <input type='submit' value='Update'>
+</form>

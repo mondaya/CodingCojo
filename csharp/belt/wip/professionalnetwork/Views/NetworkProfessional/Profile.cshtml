@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "professional_profile Page";
+}
+
+@if(ViewBag.UserName != null){
+    <div>
+        <a href="/logout">Logout</a>  
+        <a href="/users">Dashboard</a> 
+    </div>
+
+<div class="col-xs-12 col-lg-2">
+    <p ><b>Welcome,  @ViewBag.UserName<b></p>             
+</div><br>
+}
+
+<div>
+    <tr>
+    <th>Name</th>  
+    <th>Action</th>
+    </tr>
+    @{
+        foreach(var network in @Model)
+        {
+           
+                @if(network.AcceptedInvite  && !network.IgnoredInvite){
+                    <p><a href="users/@network.Follower.id">@network.Follower.FirstName  @network.Follower.LastName </p> 
+                      
+                }
+            
+        }
+    }
+
+</div>
+
+<table class="table table-condensed">
+    <tr>
+    <th>Name</th>  
+    <th>Action</th>
+    </tr>
+    @{
+        foreach(var network in @Model)
+        {
+            <tr>
+                @if(!network.AcceptedInvite  && !network.IgnoredInvite && network.FollowerInvited){
+                    <th><a href="users/@network.Follower.id">@network.Follower.FirstName  @network.Follower.LastName </a> 
+                    </th> 
+                    <th>
+                        <form class="profileAction" action="accept/@network.ConnectionId" method="post">
+                            <button class="accept btn btn-primary btn-lg" >Accept</button>
+                        </form>
+                        <form  action="decline/@network.ConnectionId" method ="post" class="profileAction">
+                            <button class="decline  btn btn-danger btn-lg">Decline</button>
+                        </form>
+                    </th>                     
+                      
+                        
+                }
+            </tr>
+        }
+    }
+
+</table>
+
+

@@ -1,0 +1,34 @@
+<h1>DojoSurvey#index</h1>
+<div id="container"> 
+    <form action="/survey/add" method="post">   
+       <input type="hidden" name="authenticity_token" value="VxLCoqvap2IdbFioGuFfTadt+I5jVDPKxwg+6/1wPZIXUHTPyQzAq6Bat6MXlSF9HYrxQN3aXSZWZqJPMf2HOw==" />
+        <label for="your_name">Your Name:</label>
+            <input type="text" name='survey[user_name]' id="your_name" placeholder="First Last" /><br><br>
+            
+        <label for="location">Location:</label>
+            <select name='survey[dojo_location]'id="location">
+                <option value="san_jose">San Jose</option>
+                <option value="seattle">Seattle</option>
+                <option value="san_francisco">San Francisco</option>
+            </select><br><br>
+            
+        <label for="language">Favorite Language:</label>
+            <select name='survey[fav_lang]' id="language">
+                <option value="python">Python</option>
+                <option value="c#">C Sharp(#)</option>
+                <option value="js">Java Script</option>
+            </select><br><br>
+        
+        <label for="comment">Comment (optional):</label>
+            <textarea row="10" cols="30" id="commnet" name='survey[comment]' ></textarea><br><br>
+        <!-- <button>Submit</button> -->
+        <input type='submit' value='Sumbit'>
+    </form>              
+</div>
+
+<% if @errors%>
+    <% @errors.each do |msg|%>
+         <p class="danger"><b><%= msg %></b></p>
+    <%end%>
+   
+<%end%>

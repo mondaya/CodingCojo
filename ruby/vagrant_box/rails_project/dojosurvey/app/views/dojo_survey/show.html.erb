@@ -1,0 +1,15 @@
+<h1>DojoSurvey#show</h1>
+
+<% if flash[:success]%>
+    <p class="success"><b><%= flash[:success]%></b></p>
+<%end%>
+ <div id="container"> 
+    <form  action="/">                
+        <p>Name:                  <%= @survey["user_name"]%> </p>
+        <p>Location:              <%= @survey["dojo_location"]%></p>
+        <p>Favorite Language:     <%= @survey["fav_lang"]%></p>
+        <p>Comment:               <%= @survey["comment"]%></p>
+        <button name="submit">Go back</button>
+    </form>        
+            
+</div>

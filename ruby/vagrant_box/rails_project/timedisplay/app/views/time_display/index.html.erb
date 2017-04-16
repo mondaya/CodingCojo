@@ -1,0 +1,7 @@
+<h1>TimeDisplay#index</h1>
+<%= stylesheet_link_tag 'time_display' %>
+<div class="line">            
+             <p>The current time and date</p>
+             <h2 class="time"><%=  @CurrentTime.strftime("%b %d, %Y") %><br><%= @CurrentTime.strftime("%I:%M %p") %></h2>
+            
+</div>

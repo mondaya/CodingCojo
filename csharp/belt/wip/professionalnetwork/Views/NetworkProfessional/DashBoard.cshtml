@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if(ViewBag.UserName != null){
+    <div>
+        <a href="/logout">Logout</a>  
+        <a href="/professional_profile">My Profile</a> 
+    </div>
+
+<div class="col-xs-12 col-lg-2">
+    <p ><b>Welcome,  @ViewBag.UserName<b></p>             
+</div><br>
+}
+
+<table class="table table-condensed" id="user_transaction">
+    <tr>
+    <th>Name</th>
+    <th>Action</th>    
+  </tr>
+   @{
+        foreach(var network in @Model)
+        {
+            <tr>
+                <th><a href="users/@network.Follower.id">@network.Follower.FirstName  @network.Follower.LastName </a></th>
+                <th><a href="javascript:void(0)"class="connect" userId=@network.Follower.id>Connect</a></th>
+            </tr>
+        }
+    }
+
+</table>
+
+

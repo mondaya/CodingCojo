@@ -1,0 +1,52 @@
+// Place all the styles related to the NinjaGold controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.building{
+                display:inline-block;
+                border: 2px solid black;
+                text-align:center;
+                padding:20px;
+                margin:10px;
+                width:150px;
+                height:120px;
+            }
+            #scoreboard{
+               text-align:right; 
+               padding:20px;
+               padding-left:0px;
+               margin:5px;
+            }
+            
+            #scoreboard input{
+               padding:2px;
+               margin:20px; 
+               border: 1px solid black;
+            }
+            textArea label{
+                margin-top:0px;
+                display:none;
+            }
+            .ScrollStyle{
+                max-height: 150px;
+                overflow-y: scroll;
+            }
+            #activities{
+                width:850px;
+                height:100px;
+                border: 1px solid black;
+                margin:20px;
+                margin-top:0px;
+                margin-left:0px;
+                overflow-y: scroll;
+                
+            }
+            .red {
+                color:red;
+            }
+            .green {
+                color:green;
+            }
+
+            #container {
+                width:900px;
+            }

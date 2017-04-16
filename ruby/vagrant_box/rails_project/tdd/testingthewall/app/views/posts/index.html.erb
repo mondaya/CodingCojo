@@ -1,0 +1,45 @@
+<h1>Posts#index</h1>
+<% if flash[:notice] %>
+  <% flash[:notice].each do |note| %>
+    <p id="notice"><%= note %></p>  
+  <% end %>
+<% end %>
+<% if session[:user_name] %>
+  <p id="login"><%= "Welcome, #{session[:user_name]}" %></p> 
+<% end %>
+<form action = "/posts" method = "post">
+  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+  <label><b>Post a Message</b></label><br><br>
+  <textArea type = "text" name = "post[message]" id = "post_message"></textArea><br><br> 
+  <input type = "submit" value = "Post a Message">
+</form>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+
+<div>
+    <% @posts.each do |post| %>        
+        <ul id="post_message">  
+          <p><%= post.user.user_name  + "-" + post.created_at.to_s %></p>        
+          <li ><%= post.message %></li>
+                  
+            <ul id="commnet_message">
+                <p><b>Comments</b></p> 
+                <% post.comments.each do |comment| %>              
+                      <p><%= comment.user.user_name  + "-" + comment.created_at.to_s %></p>
+                      <li ><%= comment.message %></li>                         
+                <%end%> 
+                <form action = <%= "/posts/#{post.id}/comments" %> method = "post">
+                  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">         
+                  <textArea type = "text" name = "comment[message]" id = "comment_message"></textArea><br><br> 
+                  <input type = "submit" value = "Post a Comment">
+                </form>                 
+             </ul>      
+                  
+        </ul>
+        
+    <%end%>
+</div>
