@@ -2,12 +2,14 @@ class UsersController < ApplicationController
   
    skip_before_action :require_login, only: [:new, :create]
 
+   before_action :require_user_auth, except: [:new, :create]
+
   def new
       
   end
 
   def show
-      #return redirect_to new_session_path unless current_user
+     
       if current_user.id === params[:id].to_i
         @user = User.find(current_user.id)
         return render
@@ -31,35 +33,42 @@ class UsersController < ApplicationController
   end
 
   def edit
-      # return redirect_to new_session_path unless current_user 
+     
   end 
 
   def update
          
-      if current_user  && (current_user.id  == params[:id].to_i )
-        @user = User.find(current_user.id)
-        @user.name = params[:Name]
-        @user.email = params[:Email]
+    
+      @user = User.find(current_user.id)
+      @user.name = params[:Name]
+      @user.email = params[:Email]
 
-        if @user.save 
-          return redirect_to user_path(current_user)
-        else
-          flash[:errors] = @user.errors.full_messages
-          return redirect_to  :back
-        end
+      if @user.save 
+        return redirect_to user_path(current_user)
+      else
+        flash[:errors] = @user.errors.full_messages
+        return redirect_to  :back
       end
+     
       flash[:errors] = ["Invalid User"]
       session[:user_id] = nil
       return redirect_to action: "new"
   end
 
-  def destroy
+  def destroy  
 
-      if current_user  && current_user.id  == params[:id].to_i 
-        @user = User.find(current_user.id)   
-        @user.delete          
-      end
+      @user = User.find(current_user.id)   
+      @user.delete     
       session[:user_id] = nil
       return redirect_to action: "new"
   end
+
+  private 
+  def require_user_auth 
+        redirect_to "/users/#{params[:id]}"  unless current_user.id  == params[:id].to_i 
+  end 
+
+  def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end

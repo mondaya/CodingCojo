@@ -1,4 +1,7 @@
 class SecretsController < ApplicationController
+
+  before_action :require_secret_auth, only: [:destroy]
+
   def index
      # return redirect_to new_session_path unless current_user 
     @secrets = Secret.all
@@ -19,4 +22,9 @@ class SecretsController < ApplicationController
     @secret.destroy
     redirect_to user_path(current_user)
   end
+
+  private 
+  def require_secret_auth 
+        redirect_to action: "index" , controller: "secrets"  unless current_user.id  == Secret.find(params[:id]).user.id
+  end 
 end
