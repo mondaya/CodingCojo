@@ -1,0 +1,12 @@
+<a href="logout">Log Out</a>
+@foreach (var message in ViewBag.userObject.ReceivedMessages) {
+    TimeSpan span = DateTime.Now - message.CreatedAt;
+    <p>Message: @message.MessageContent</p>
+    <p>Time since created: @DateTime.Now</p>
+    <p>@message.CreatedAt</p>
+    <h1>@span</h1>
+    <p>Days: @span.Days</p>
+    <p>Hours: @span.Hours</p>
+    <p>Minutes: @span.Minutes</p>
+    <p>Seconds: @span.Seconds</p>
+}

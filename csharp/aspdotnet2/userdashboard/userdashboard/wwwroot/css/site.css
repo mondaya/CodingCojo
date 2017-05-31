@@ -1,0 +1,35 @@
+/*Write all of your CSS here*/
+#registration_grid {
+    margin-top:25px;
+    margin-left:50px;
+}
+.error {
+        color: red;
+}
+body {
+    background-color: whitesnow;
+    background-image: url("");
+    background-repeat: no-repeat;
+}
+.map-container {
+    position: relative;
+    padding-bottom: 26.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+.map-container iframe,
+.map-container object,
+.map-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#container {
+    margin-bottom: 100px;
+}
+.bold {
+    font-weight: bold;
+}
